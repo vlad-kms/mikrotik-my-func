@@ -1,4 +1,4 @@
-### JParseFunctions
+### JParseFunctions ###
 
 # ------------------------------- fJParsePrint ----------------------------------------------------------------
 :global fJParsePrint
@@ -11,7 +11,7 @@
     :set $1 "\$JParseOut"
     :set $2 $JParseOut
    }
-   
+
   :foreach k,v in=$2 do={
     :if ([:typeof $k] = "str") do={
       :set k "\"$k\""
@@ -40,7 +40,7 @@
     :set $1 "\$JParseOut"
     :set $2 $JParseOut
    }
-   
+
   :foreach k,v in=$2 do={
     :if ([:typeof $k] = "str") do={
       :set k "\"$k\""
@@ -48,7 +48,7 @@
     :set TempPath ($1. "->" . $k)
     :if ($fJParsePrintRet != "") do={
       :set fJParsePrintRet ($fJParsePrintRet . "\r\n")
-    }    
+    }
     :if ([:typeof $v] = "array") do={
       :if ([:len $v] > 0) do={
         :set fJParsePrintRet ($fJParsePrintRet . [$fJParsePrintVar $TempPath $v])
@@ -84,7 +84,7 @@
   :if (!$1) do={
     :set Jpos 0
    }
-  
+
   $fJSkipWhitespace
   :set Char [:pick $JSONIn $Jpos]
   :if ($Jdebug) do={:put "fJParse: Jpos=$Jpos Char=$Char"}
@@ -160,7 +160,7 @@
           :set Unicode  (($UTFCode & 0x3FF) << 10)
           :set UTFCode [:tonum "0x$[:pick $JSONIn ($Jpos+8) ($Jpos+12)]"]
           :set Unicode ($Unicode | ($UTFCode & 0x3FF) | 0x10000)
-          :set TempString ($TempString . [:pick $JSONIn $StartIdx $Jpos] . [$fUnicodeToUTF8 $Unicode])         
+          :set TempString ($TempString . [:pick $JSONIn $StartIdx $Jpos] . [$fUnicodeToUTF8 $Unicode])
           :set Jpos ($Jpos + 12)
         } else= {
 # Basic Multilingual Plane (BMP)
@@ -209,13 +209,13 @@
   :local NumberString
   :local Number
 
-  :set StartIdx $Jpos   
+  :set StartIdx $Jpos
   :set Jpos ($Jpos + 1)
   :while ($Jpos < [:len $JSONIn] and [:pick $JSONIn $Jpos]~"[eE0-9.+-]") do={
     :set Jpos ($Jpos + 1)
   }
   :set NumberString [:pick $JSONIn $StartIdx $Jpos]
-  :set Number [:tonum $NumberString] 
+  :set Number [:tonum $NumberString]
   :if ([:typeof $Number] = "num") do={
     :if ($Jdebug) do={:put "fJParseNumber: StartIdx=$StartIdx Jpos=$Jpos $Number ($[:typeof $Number])"}
     :return $Number
@@ -235,8 +235,8 @@
   :global fJSkipWhitespace
   :local Value
   :local ParseArrayRet [:toarray ""]
-  
-  $fJSkipWhitespace    
+
+  $fJSkipWhitespace
   :while ($Jpos < [:len $JSONIn] and [:pick $JSONIn $Jpos]!= "]") do={
     :set Value [$fJParse true]
     :set ($ParseArrayRet->([:len $ParseArrayRet])) $Value
@@ -266,7 +266,7 @@
   :local Key
   :local Value
   :local ExitDo false
-  
+
   $fJSkipWhitespace
   :while ($Jpos < [:len $JSONIn] and [:pick $JSONIn $Jpos]!="}" and !$ExitDo) do={
     :if ([:pick $JSONIn $Jpos]!="\"") do={
@@ -317,7 +317,7 @@
   } else={
     :if ($1 < 0x800) do={
       :set Nbyte 2
-    } else={  
+    } else={
       :if ($1 < 0x10000) do={
         :set Nbyte 3
       } else={
