@@ -1,5 +1,5 @@
-### JParseFunctions ###
-
+### JParseFunctions (c) ###
+### I didn't make it, I just use it ###
 # ------------------------------- fJParsePrint ----------------------------------------------------------------
 :global fJParsePrint
 :if (!any $fJParsePrint) do={ :global fJParsePrint do={

@@ -169,10 +169,10 @@
   :if ($isDeb) do={
     :if ($idError=>0) do={
        ### no error ###
-       :log info "Çàïèñü DNS äîáàâèëè (îáíîâèëè) áåç îøèáîê"
+       :log info "DNS record added (updated) without errors"
     } else={
        ### errors ###
-       :log info "Çàïèñü DNS íå äîáàâèëè (îáíîâèëè). Îøèáêè."
+       :log info "DNS record not added (updated). Erros."
     }
   }
   :return $idError
