@@ -10,7 +10,7 @@
 #  Searching in the string "valueStr" of a substring "charSearch"
 #  Input:
 #        isDebug
-#        valueStr - string to search 
+#        valueStr - string to search
 #        charSearch - char to match
 #        searchAll - search for all matches or only first
 #  Output:
@@ -22,15 +22,15 @@
 #  $findAndCount valueStr="wqewq.1wewq.ewe.1" charSearch="." searchAll=true
 #     [3;5;11;15]
 ##############################
-  
+
   :global my2bool;
   :global islogFunc;
-  
+
   :local str [:tostr $valueStr]
   :local charS [:tostr $charSearch]
   :local ret [:toarray "0"]
   :local sAll [:tobool 1]
-  
+
   :local isDeb [$my2bool value=$isDebug];
   :set $isDeb ([:tobool $islogFunc] || [:tobool $isDeb]);
   :if ( [:typeof ($searchAll)]!="nothing") do={
@@ -42,7 +42,7 @@
     :log info "charS=$charS"
     :log info "sAll=$sAll"
   }
-  
+
   ### return array [0], if an empty string is passed ###
   :if ([:len $str]=0) do={ :return $ret; }
   ### return array [0], if no search character is passed ###
