@@ -38,7 +38,7 @@
 #      subj ------ subj letter
 #      pBODY - body letter
 #      pPORT  - port smtp on server
-#      pFILE --- file åù ûóòâ
+#      pFILE --- file to send
 #      pTLS ---- use tls or no
 #   Output: Not
 ##############################
@@ -582,8 +582,8 @@
     :local changeStatus false;
     :if ($isDeb) do={
       :log info [:typeof $iface]
-      :log info "Èíòåðôåéñ: $iface"
-      :log info "Ýòî ïðèâàòíûé àäðåñ: $isBogon"
+      :log info "Interface: $iface"
+      :log info "Is private address: $isBogon"
       :log info ($stat)
       :log info ($stat->"ipm")
       :log info "isEnb: $isEnb"
