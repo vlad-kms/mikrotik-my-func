@@ -38,7 +38,7 @@
 #      subj ------ subj letter
 #      pBODY - body letter
 #      pPORT  - port smtp on server
-#      pFILE --- file åù ûóòâ
+#      pFILE --- file to send
 #      pTLS ---- use tls or no
 #   Output: Not
 ##############################
