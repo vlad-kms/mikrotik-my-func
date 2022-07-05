@@ -7,11 +7,17 @@
     или через Winbox
 После запуска скрипта IniOnStart появятся все функции из всей библиотеки. Этот скрипт подгрузит функции и из остальных скриптов. Можно использовать другие скрипты и отдельно.
 
-Для ознакомления с используемыми переменными смотрите репозиторий `vlad-kms/mikrotik-initVars` файл `source/initVars.lst`
+Для ознакомления с используемыми переменными смотрите репозиторий
+
+`vlad-kms/mikrotik-initVars` https://github.com/vlad-kms/mikrotik-initVars
+файл `source/initVars.lst`
 
 ---
 ### Используемые переменные:
-Смотрите репозиторий `vlad-kms/mikrotik-initVars` файл `source/initVars.lst`
+Смотрите репозиторий `vlad-kms/mikrotik-initVars` https://github.com/vlad-kms/mikrotik-initVars 
+
+файл `source/initVars.lst`
+
 Или ниже
 ```powershell
     ########################################
@@ -176,7 +182,7 @@
     ########################################
 :global homeDNS [:toarray ""]
     # IP адрес локального DNS сервера
-:set ($homeDNS->"server") 192.168.15.97
+:set ($homeDNS->"server") 192.168.115.97
     # имя TSIG ключа, авторизованного для данного сервера
 :set ($homeDNS->"keyName") "home-lan-key"
     # TSIG ключ
